@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap');
+
+.date-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 10px;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.07);
+}
+
+.date-bar button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 58px;
+  border-radius: 14px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: 'Heebo', sans-serif;
+}
+
+.date-bar button:hover {
+  background: #f0f5e0;
+}
+
+.date-bar button.active {
+  background: #c8e86a;
+}
+
+.day-label {
+  font-size: 11px;
+  color: #aaa;
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+
+.day-number {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e2a14;
+}
+
+.date-bar button.active .day-label {
+  color: #1e2a14;
+  opacity: 0.7;
+}
+
+.date-bar button.active .day-number {
+  color: #1e2a14;
+}

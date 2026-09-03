@@ -1,0 +1,82 @@
+# ==================================================
+# Angular / Node
+# ==================================================
+
+Client/node_modules/
+Client/dist/
+Client/.angular/
+Client/.sass-cache/
+
+# npm / yarn logs
+Client/npm-debug.log
+Client/yarn-error.log
+
+
+# ==================================================
+# ASP.NET Core / .NET
+# ==================================================
+
+# Build output
+Server_Diet/**/bin/
+Server_Diet/**/obj/
+
+# .NET logs
+Server_Diet/**/*.log
+
+
+# ==================================================
+# Visual Studio
+# ==================================================
+
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+
+# ==================================================
+# JetBrains / Rider
+# ==================================================
+
+.idea/
+
+
+# ==================================================
+# Environment / Local configuration
+# ==================================================
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Local ASP.NET Core configuration
+Server_Diet/**/appsettings.Development.json
+Server_Diet/**/appsettings.Local.json
+
+
+# ==================================================
+# Test / Coverage
+# ==================================================
+
+**/coverage/
+**/TestResults/
+
+
+# ==================================================
+# Angular / Test temporary files
+# ==================================================
+
+Server_Diet/**/TestResults/
+Client/testem.log
+Client/typings/
+Client/__screenshots__/
+
+
+# ==================================================
+# Operating System files
+# ==================================================
+
+.DS_Store
+Thumbs.db

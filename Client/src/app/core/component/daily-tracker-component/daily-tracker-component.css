@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap');
+
+:host { display: block; }
+
+.tracker-wrapper {
+  font-family: 'Heebo', sans-serif;
+  direction: rtl;
+  padding: 40px 48px;
+  min-height: 100vh;
+  background: #f4f6ee;
+  display: grid;
+  grid-template-columns: 440px 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 0 36px;
+  align-items: start;
+}
+
+/* ── header ── */
+.header-section {
+  grid-column: 1 / -1;
+  margin-bottom: 28px;
+}
+
+.header-section h1 {
+  font-size: 30px;
+  font-weight: 900;
+  color: #1e2a14;
+  margin: 0 0 4px;
+}
+
+.header-section p {
+  font-size: 15px;
+  color: #8a9a7a;
+  margin: 0;
+}
+
+/* ── כרטיס קלוריות ── */
+.calorie-dashboard-card {
+  grid-column: 1;
+  grid-row: 2;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  border: 1.5px dashed #d4e8a0;
+  position: sticky;
+  top: 20px;
+}
+
+.calorie-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.calorie-header h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e2a14;
+  margin: 0;
+}
+
+app-date-selector {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.calorie-chart-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.calorie-ring {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: conic-gradient(
+    #FFEA36 0% calc(var(--protein-perc) * 1%),
+    #FF7B2F calc(var(--protein-perc) * 1%) calc((var(--protein-perc) + var(--carbs-perc)) * 1%),
+    #C5E45D calc((var(--protein-perc) + var(--carbs-perc)) * 1%) calc((var(--protein-perc) + var(--carbs-perc) + var(--fat-perc)) * 1%),
+    #eeeeee calc((var(--protein-perc) + var(--carbs-perc) + var(--fat-perc)) * 1%) 100%
+  );
+  transition: background 0.4s ease;
+}
+
+.calorie-center {
+  width: 150px;
+  height: 150px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.main-number {
+  font-size: 36px;
+  font-weight: 900;
+  color: #1e2a14;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.sub-text {
+  font-size: 12px;
+  color: #aaa;
+  font-weight: 500;
+}
+
+.ring-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 14px;
+  z-index: 3;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+.macros-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.macro-box {
+  background: #f7f8f2;
+  border-radius: 14px;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.macro-icon { font-size: 20px; margin-bottom: 6px; }
+
+.macro-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.macro-title  { font-size: 11px; color: #888; font-weight: 500; }
+.macro-values { font-size: 13px; font-weight: 700; color: #1e2a14; margin-top: 2px; }
+
+.macro-progress-bar {
+  width: 100%;
+  height: 5px;
+  background: #e5e7e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bar-fill { height: 100%; border-radius: 10px; transition: width 0.4s ease; }
+
+.protein-box { border-top: 3px solid #FFEA36; }
+.carbs-box   { border-top: 3px solid #FF7B2F; }
+.fat-box     { border-top: 3px solid #C5E45D; }
+
+.protein-box .bar-fill { background: #FFEA36; }
+.carbs-box   .bar-fill { background: #FF7B2F; }
+.fat-box     .bar-fill { background: #C5E45D; }
+
+/* ── כרטיס ריק בצד שמאל ── */
+.empty-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.empty-ring-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 0;
+}
+
+.empty-ring-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 12px dashed #e0e8cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.empty-ring-icon { font-size: 40px; opacity: 0.3; }
+.empty-ring-text { font-size: 14px; color: #aaa; }
+
+/* ── עמודה ימנית ── */
+.meals-panel {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* ── כפתור הצג ארוחות ── */
+.toggle-meals-btn {
+  width: 100%;
+  padding: 14px;
+  background: #1e2a14;
+  color: #C5E45D;
+  border: none;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.toggle-meals-btn:hover  { background: #2a3d1a; }
+.toggle-meals-btn:active { transform: scale(0.98); }
+
+/* ══════════════════════════
+   מצב ריק — orbit animation
+══════════════════════════ */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+  text-align: center;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1.5px dashed #d4e8a0;
+}
+
+.empty-orbit {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 24px;
+}
+
+.orbit-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #f4f6ee;
+  border: 1.5px solid #d4e8a0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  z-index: 2;
+}
+
+.orbit-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px dashed #d4e8a0;
+  animation: orbit-spin 8s linear infinite;
+}
+
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.orbit-dot {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #e0e8cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.dot-1 { top: -4px;  left: 50%;    transform: translateX(-50%); }
+.dot-2 { bottom: -4px; left: 50%;  transform: translateX(-50%); }
+.dot-3 { top: 50%;   left: -4px;   transform: translateY(-50%); }
+.dot-4 { top: 50%;   right: -4px;  transform: translateY(-50%); }
+
+.empty-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e2a14;
+  margin-bottom: 8px;
+}
+
+.empty-sub {
+  font-size: 13px;
+  color: #8a9a7a;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.empty-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.empty-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f4f6ee;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #5a6e48;
+  text-align: right;
+}
+
+.step-num {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  background: #1e2a14;
+  color: #C5E45D;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .tracker-wrapper {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+  }
+
+  .calorie-dashboard-card {
+    grid-column: 1;
+    grid-row: 2;
+    position: static;
+    margin-bottom: 24px;
+  }
+
+  .meals-panel {
+    grid-column: 1;
+    grid-row: 3;
+  }
+}

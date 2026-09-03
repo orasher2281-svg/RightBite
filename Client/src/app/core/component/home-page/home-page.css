@@ -1,0 +1,454 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+/* יסודות וצבעים מהסקיצה */
+.landing-page {
+  direction: rtl;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  color: #212529;
+  background-color: #fcfbf7; /* צבע הרקע הבהיר בקובץ */
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn-primary {
+  background-color: #a3e635; /* הירוק הזוהר מהאלמנטים */
+  color: #122b14;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #8ed024;
+  transform: translateY(-2px);
+}
+
+.badge {
+  background-color: #2a402c;
+  color: #a3e635;
+  padding: 6px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.badge-alt {
+  background-color: #a3e635;
+  color: #122b14;
+  padding: 6px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Hero */
+.hero-section {
+  background-color: #172a19; /* הירוק הכהה השולט מהעיצוב */
+  color: #ffffff;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+ font-family: 'Varela Round', sans-serif;
+}
+
+.hero-title .highlight {
+  color: #a3e635;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  opacity: 0.9;
+}
+
+/* Stats Section */
+.stats-section {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.stats-section h2 {
+  font-size: 2.2rem;
+  color: #172a19;
+}
+
+.section-desc {
+  color: #666;
+  margin-bottom: 50px;
+  font-size: 1.1rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.stat-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  text-align: right;
+  border-bottom: 5px solid transparent;
+}
+
+.stat-card.border-green { border-bottom-color: #65a30d; }
+.stat-card.border-orange { border-bottom-color: #ea580c; }
+.stat-card.border-yellow { border-bottom-color: #ca8a04; }
+
+.stat-number {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.color-green { color: #65a30d; }
+.color-orange { color: #ea580c; }
+.color-yellow { color: #ca8a04; }
+
+/* Features Section */
+.features-section {
+  background-color: #172a19;
+  color: white;
+  padding: 80px 0;
+}
+
+.features-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.features-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.feature-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  gap: 15px;
+}
+
+.feature-item .icon {
+  font-size: 1.8rem;
+  background: rgba(163, 230, 53, 0.2);
+  padding: 10px;
+  border-radius: 50px;
+  height: fit-content;
+}
+
+/* Steps Section */
+.steps-section {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.step-card {
+  background: white;
+  padding: 40px 25px;
+  border-radius: 16px;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.step-number {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #172a19;
+  color: #a3e635;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.step-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* עיצוב פיצ'ר: MEAL PLAYGROUND */
+.playground-section {
+  background-color: #f0f4f1;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.playground-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.food-market {
+  text-align: right;
+  border-left: 1px solid #eee;
+  padding-left: 20px;
+}
+
+.food-market h3 { color: #172a19; margin-bottom: 20px; }
+
+.food-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.food-btn {
+  background: #fbfcfb;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.food-btn:hover {
+  border-color: #a3e635;
+  background: #f7fee7;
+  transform: scale(1.02);
+}
+
+.food-emoji { font-size: 1.6rem; }
+.food-name { font-weight: 600; flex-grow: 1; text-align: right; font-size: 0.95rem; }
+.food-cal { font-size: 0.8rem; color: #666; background: #eee; padding: 2px 6px; border-radius: 6px; }
+
+.btn-clear {
+  margin-top: 20px; background: none; border: none; color: #ef4444; font-weight: bold; cursor: pointer;
+}
+
+/* הצלחת הדינמית */
+.plate-visualizer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.plate {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: #f8fafc;
+  border: 12px solid #e2e8f0;
+  box-shadow: inset 0 4px 10px rgba(0,0,0,0.05), 0 8px 20px rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plate-inner {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 1px dashed #cbd5e1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.empty-plate-text { color: #94a3b8; font-size: 0.9rem; line-height: 1.4; }
+.food-on-plate { font-size: 2.2rem; animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+@keyframes popIn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+.plate-stats { width: 100%; max-width: 400px; text-align: center; }
+.total-calories .calories-num { font-size: 3rem; font-weight: 800; color: #172a19; display: block; }
+.total-calories .calories-lbl { color: #65a30d; font-weight: bold; font-size: 1rem; }
+
+.macros-bars { margin: 20px 0; display: flex; flex-direction: column; gap: 10px; text-align: right; }
+.m-bar span { font-size: 0.85rem; font-weight: 600; }
+.bar-track { background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 4px; }
+.bar-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease; }
+.p-fill { background-color: #3b82f6; }
+.c-fill { background-color: #f59e0b; }
+.f-fill { background-color: #ef4444; }
+
+.smart-feedback {
+  background: #f7fee7;
+  border-right: 4px solid #a3e635;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: right;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+}
+.smart-feedback p { margin: 0; font-size: 0.95rem; color: #1e3a1e; font-weight: 500; }
+
+/* Contact Form עיצוב צור קשר מהתמונה */
+.contact-section {
+  padding: 80px 0;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 60px;
+}
+
+.info-card {
+  display: flex;
+  gap: 15px;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+}
+
+.info-icon { font-size: 1.5rem; }
+
+.contact-form {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  gap: 8px;
+  flex: 1;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #172a19;
+  font-size: 0.9rem;
+}
+
+.form-group input, .form-group textarea {
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #fbfbfb;
+  font-size: 1rem;
+}
+
+.btn-submit {
+  background-color: #172a19;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.3s;
+}
+
+.btn-submit:disabled {
+  background-color: #a1a1a1;
+  cursor: not-allowed;
+}
+
+.send-icon { transform: rotate(180deg); }
+
+.form-status {
+  padding: 12px;
+  border-radius: 6px;
+  text-align: right;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.form-status.success { background-color: #dcfce7; color: #166534; }
+.form-status.error { background-color: #fee2e2; color: #991b1b; }
+
+/* Footer */
+.main-footer {
+  background-color: #172a19;
+  color: rgba(255,255,255,0.7);
+  padding: 40px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.footer-links a:hover { color: #a3e635; }
+.footer-logo { font-weight: bold; color: #a3e635; font-size: 1.3rem; }
+
+@media (max-width: 768px) {
+  .playground-container, .features-container, .contact-container, .form-row { grid-template-columns: 1fr; }
+  .food-market { border-left: none; border-bottom: 1px solid #eee; padding-left: 0; padding-bottom: 20px; }
+  .hero-title { font-size: 2.5rem; }
+}

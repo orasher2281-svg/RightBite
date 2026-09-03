@@ -1,0 +1,101 @@
+<div class="custom-food-form">
+
+  <div class="form-header">
+    <div class="form-header-icon">✨</div>
+    <h3>הוסיפי מאכל חדש</h3>
+    <p>ניתוח חכם עם בינה מלאכותית</p>
+  </div>
+
+  <div class="fields-group">
+    <div class="field-wrap">
+      <label>שם המאכל</label>
+      <input type="text" [(ngModel)]="name" placeholder="למשל: שקשוקה ביתית">
+    </div>
+
+    <div class="field-wrap">
+      <label>תיאור קצר</label>
+      <textarea [(ngModel)]="description" placeholder="מה יש בתוכו? רכיבים, אופן הכנה..."></textarea>
+    </div>
+
+    <div class="file-upload-wrap">
+      <label class="file-upload-label">
+        <span class="file-icon">📷</span>
+        <span class="file-text">העלי תמונה של המאכל</span>
+        <input type="file" (change)="onFileSelected($event)" hidden>
+      </label>
+      @if (selectedFile) {
+        <span class="file-name">✔ {{ selectedFile.name }}</span>
+      }
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn-analyze" (click)="saveNewFood()" [disabled]="isLoading">
+      @if (isLoading) {
+        <span class="loading-dots">
+          <span></span><span></span><span></span>
+        </span>
+        מנתח מאכל, אנא המתיני...
+      } @else {
+        ✨ ניתוח מאכל ע"י AI
+      }
+    </button>
+    <button class="btn-cancel" (click)="onClose.emit(false)" [disabled]="isLoading">ביטול</button>
+  </div>
+
+  @if (calculatedNutrition) {
+    <div class="results-section">
+
+      <div class="results-header">
+        <span class="results-badge">תוצאות הניתוח</span>
+        <h4>ערכי לעריכה לפני שמירה</h4>
+      </div>
+
+      <img [src]="calculatedNutrition.imageUrl" alt="Food Image" class="food-image">
+
+      <div class="edit-fields">
+        <div class="field-wrap">
+          <label>שם</label>
+          <input type="text" [(ngModel)]="calculatedNutrition.name">
+        </div>
+        <div class="field-wrap">
+          <label>תיאור</label>
+          <input type="text" [(ngModel)]="calculatedNutrition.description">
+        </div>
+      </div>
+
+      <div class="macros-edit-grid">
+        <div class="macro-edit-box calories-box">
+          <span class="macro-edit-icon">🔥</span>
+          <label>קלוריות</label>
+          <input type="number" [(ngModel)]="calculatedNutrition.calories">
+        </div>
+        <div class="macro-edit-box protein-box">
+          <span class="macro-edit-icon">🥚</span>
+          <label>חלבון</label>
+          <input type="number" [(ngModel)]="calculatedNutrition.protein">
+          <span class="macro-unit">גרם</span>
+        </div>
+        <div class="macro-edit-box carbs-box">
+          <span class="macro-edit-icon">🍞</span>
+          <label>פחמימות</label>
+          <input type="number" [(ngModel)]="calculatedNutrition.carbs">
+          <span class="macro-unit">גרם</span>
+        </div>
+        <div class="macro-edit-box fat-box">
+          <span class="macro-edit-icon">🥑</span>
+          <label>שומן</label>
+          <input type="number" [(ngModel)]="calculatedNutrition.fat">
+          <span class="macro-unit">גרם</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-save" (click)="confirmAndSave()">✔ שמור נתונים</button>
+        <button class="btn-reanalyze" (click)="calculatedNutrition = null">❌ ניתוח מחדש</button>
+      </div>
+
+    </div>
+  }
+
+</div>

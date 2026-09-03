@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap');
+
+.rb-nav {
+  background: #b8d94e;
+  padding: 0 40px;
+  height: 72px;
+  direction: rtl;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.rb-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.rb-logo-img {
+  height: 42px;
+  width: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.rb-link {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 700;
+  font-family: 'Heebo', sans-serif;
+  padding: 8px 18px;
+  border-radius: 10px;
+  transition: background 0.15s, color 0.15s;
+  letter-spacing: 0.3px;
+}
+
+.rb-link:hover,
+.rb-link.active {
+  background: rgba(255,255,255,0.25);
+  color: white;
+}
+
+.rb-user-name {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Heebo', sans-serif;
+  color: white;
+}
+
+::ng-deep .rb-btn-ghost.p-button {
+  color: white !important;
+  border-color: rgba(255,255,255,0.7) !important;
+  background: transparent !important;
+  font-family: 'Heebo', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  border-radius: 10px !important;
+  padding: 8px 22px !important;
+}
+
+::ng-deep .rb-btn-ghost.p-button:hover {
+  background: rgba(255,255,255,0.2) !important;
+}
+
+::ng-deep .rb-btn-primary.p-button {
+  background: #1e2a14 !important;
+  border-color: #1e2a14 !important;
+  color: #c8e86a !important;
+  font-family: 'Heebo', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  border-radius: 10px !important;
+  padding: 8px 22px !important;
+}
+
+::ng-deep .rb-btn-primary.p-button:hover {
+  background: #2a3d1a !important;
+  border-color: #2a3d1a !important;
+}
+
+::ng-deep .rb-avatar {
+  background: #1e2a14 !important;
+  color: #c8e86a !important;
+  font-family: 'Heebo', sans-serif !important;
+  font-weight: 700 !important;
+}
+.rb-btn-logout {
+  color: white;
+  background: rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(255,255,255,0.4);
+  font-family: 'Heebo', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.rb-btn-logout:hover {
+  background: rgba(34, 135, 64, 0.25);
+  border-color: rgba(18, 56, 34, 0.6);
+}

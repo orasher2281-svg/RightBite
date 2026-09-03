@@ -1,0 +1,30 @@
+@if (meals.length > 0) {
+
+  <div class="meals-header">
+    <span class="meals-count">{{ meals.length }}</span>
+    <h3>ארוחות היום</h3>
+  </div>
+
+  <div class="meals-grid">
+    @for (meal of meals; track $index) {
+      <div class="meal-card">
+        <img [src]="meal?.food?.imageUrl||'smalLogo.png'" alt="{{ meal?.food?.name }}" class="meal-img" />
+        <div class="meal-body">
+          <div class="meal-top">
+            <span class="meal-name">{{ meal?.food?.name }}</span>
+            <span class="meal-qty">{{ meal.quantity }} גרם</span>
+          </div>
+          <div class="meal-macros">
+            <span class="macro-tag cal">🔥 {{ meal?.food?.calories | number:'1.0-0' }} קל׳</span>
+            <span class="macro-tag prot">🥚 {{ meal?.food?.protein | number:'1.0-1' }}ג׳</span>
+            <span class="macro-tag carb">🍞 {{ meal?.food?.carbs | number:'1.0-1' }}ג׳</span>
+            <span class="macro-tag fat">🥑 {{ meal?.food?.fat | number:'1.0-1' }}ג׳</span>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+} @else {
+  <div class="empty-state">אין ארוחות ליום זה</div>
+}

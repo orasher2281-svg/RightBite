@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap');
+
+.custom-food-form {
+  font-family: 'Heebo', sans-serif;
+  direction: rtl;
+  background: #f7f8f2;
+  min-height: 100vh;
+  padding: 32px 24px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* כותרת */
+.form-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.form-header-icon {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.form-header h3 {
+  font-size: 26px;
+  font-weight: 900;
+  color: #1e2a14;
+  margin: 0 0 6px;
+}
+
+.form-header p {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+/* שדות */
+.fields-group {
+  background: white;
+  border-radius: 24px;
+  padding: 20px;
+  border: 1.5px dashed #d4e8a0;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-wrap label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.field-wrap input,
+.field-wrap textarea {
+  background: #f7f8f2;
+  border: 1.5px solid #e5e8de;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: 'Heebo', sans-serif;
+  color: #1e2a14;
+  transition: border-color 0.2s;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.field-wrap input:focus,
+.field-wrap textarea:focus {
+  border-color: #c8e86a;
+}
+
+.field-wrap textarea {
+  resize: none;
+  height: 90px;
+}
+
+/* העלאת קובץ */
+.file-upload-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.file-upload-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f0f5e0;
+  border: 2px dashed #c8e86a;
+  border-radius: 14px;
+  padding: 14px 18px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.file-upload-label:hover {
+  background: #e8f2cc;
+}
+
+.file-icon {
+  font-size: 22px;
+}
+
+.file-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e2a14;
+}
+
+.file-name {
+  font-size: 13px;
+  color: #5a8a20;
+  font-weight: 600;
+  padding-right: 4px;
+}
+
+/* כפתורות פעולה */
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn-analyze {
+  flex: 1;
+  background: #1e2a14;
+  color: #c8e86a;
+  border: none;
+  border-radius: 16px;
+  padding: 15px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s;
+}
+
+.btn-analyze:hover:not(:disabled) {
+  background: #2a3d1a;
+}
+
+.btn-analyze:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* אנימציית טעינה */
+.loading-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.loading-dots span {
+  width: 6px;
+  height: 6px;
+  background: #c8e86a;
+  border-radius: 50%;
+  animation: bounce 1.2s infinite;
+}
+
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0.7); opacity: 0.5; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+.btn-cancel {
+  background: white;
+  color: #888;
+  border: 1.5px solid #e5e8de;
+  border-radius: 16px;
+  padding: 15px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-cancel:hover:not(:disabled) {
+  background: #f7f8f2;
+}
+
+/* אזור תוצאות */
+.results-section {
+  background: white;
+  border-radius: 24px;
+  padding: 22px;
+  border: 1.5px dashed #d4e8a0;
+}
+
+.results-header {
+  margin-bottom: 16px;
+}
+
+.results-badge {
+  background: #c8e86a;
+  color: #1e2a14;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.results-header h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e2a14;
+  margin: 10px 0 0;
+}
+
+.food-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+/* גריד מאקרו לעריכה */
+.macros-edit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.macro-edit-box {
+  background: #f7f8f2;
+  border-radius: 16px;
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+
+.macro-edit-icon {
+  font-size: 22px;
+}
+
+.macro-edit-box label {
+  font-size: 11px;
+  color: #888;
+  font-weight: 700;
+}
+
+.macro-edit-box input {
+  width: 100%;
+  background: white;
+  border: 1.5px solid #e5e8de;
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 18px;
+  font-weight: 900;
+  font-family: 'Heebo', sans-serif;
+  text-align: center;
+  color: #1e2a14;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.macro-edit-box input:focus {
+  border-color: #c8e86a;
+}
+
+.macro-unit {
+  font-size: 11px;
+  color: #aaa;
+}
+
+.calories-box { border-top: 3px solid #f07c3a; }
+.protein-box  { border-top: 3px solid #FFEA36; }
+.carbs-box    { border-top: 3px solid #FF7B2F; }
+.fat-box      { border-top: 3px solid #C5E45D; }
+
+/* כפתורי שמירה */
+.btn-save {
+  flex: 1;
+  background: #1e2a14;
+  color: #c8e86a;
+  border: none;
+  border-radius: 16px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-save:hover {
+  background: #2a3d1a;
+}
+
+.btn-reanalyze {
+  background: white;
+  color: #e84040;
+  border: 1.5px solid #f5c0c0;
+  border-radius: 16px;
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-reanalyze:hover {
+  background: #fff5f5;
+}

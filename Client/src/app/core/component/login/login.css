@@ -1,0 +1,437 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap');
+
+:host { display: block; }
+* { box-sizing: border-box; }
+
+.lg-page {
+  font-family: 'Heebo', sans-serif;
+  direction: rtl;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+/* ══════════════════════
+   צד שמאל
+══════════════════════ */
+.lg-left {
+  background: #1e2a14;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lg-left-content {
+  width: 100%;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.lg-logo-text {
+  font-size: 28px;
+  font-weight: 900;
+  color: #c8e86a;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.lg-logo-text span { font-weight: 400; color: #fff; }
+
+.lg-left-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+
+.lg-left-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  margin: 0 0 32px;
+  max-width: 280px;
+}
+
+/* ── Orbit food animation ── */
+.lg-food-orbit {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 32px;
+}
+
+.lg-orbit-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  border-radius: 50%;
+  border: 1px dashed rgba(200,232,106,0.2);
+  transform: translate(-50%,-50%);
+}
+
+.lg-ring-1 {
+  width: 180px; height: 180px;
+  animation: spin 16s linear infinite;
+}
+
+.lg-ring-2 {
+  width: 120px; height: 120px;
+  animation: spin 10s linear infinite reverse;
+}
+
+@keyframes spin {
+  from { transform: translate(-50%,-50%) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(360deg); }
+}
+
+.lg-food-item {
+  position: absolute;
+  font-size: 22px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(200,232,106,0.15);
+}
+
+/* מניעת סיבוב של האמוג'י עצמם */
+.lg-ring-1 .lg-food-item {
+  animation: counter-spin 16s linear infinite;
+}
+.lg-ring-2 .lg-food-item {
+  animation: counter-spin-2 10s linear infinite reverse;
+}
+
+@keyframes counter-spin   { from { transform: rotate(0deg);   } to { transform: rotate(-360deg); } }
+@keyframes counter-spin-2 { from { transform: rotate(0deg);   } to { transform: rotate(360deg);  } }
+
+.lg-fi-1 { top: -20px; left: calc(50% - 20px); }
+.lg-fi-2 { bottom: -20px; right: -20px; }
+.lg-fi-3 { bottom: -20px; left: -20px; }
+.lg-fi-4 { top: -20px; left: calc(50% - 20px); }
+.lg-fi-5 { bottom: -20px; left: calc(50% - 20px); }
+
+.lg-orbit-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 70px; height: 70px;
+  border-radius: 50%;
+  background: #1e2a14;
+  border: 2px solid #c8e86a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.lg-center-logo {
+  width: 60px; height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* stats */
+.lg-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 14px 20px;
+  border: 1px solid rgba(200,232,106,0.1);
+}
+
+.lg-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.lg-stat-num {
+  font-size: 18px;
+  font-weight: 900;
+  color: #c8e86a;
+}
+
+.lg-stat-lbl {
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  font-weight: 600;
+}
+
+.lg-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.1);
+}
+
+/* ══════════════════════
+   צד ימין
+══════════════════════ */
+.lg-right {
+  background: #f4f6ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 28px;
+  min-height: 100vh;
+}
+
+.lg-form-card {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 28px;
+  border: 1.5px dashed #d4e8a0;
+  padding: 32px 28px;
+}
+
+.lg-form-header { margin-bottom: 20px; }
+
+.lg-form-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: #1e2a14;
+  margin: 0 0 4px;
+}
+
+.lg-form-sub {
+  font-size: 13px;
+  color: #7a8a6a;
+  margin: 0;
+}
+
+
+
+/* שדות */
+.lg-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.lg-lbl-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lg-lbl {
+  font-size: 10px;
+  font-weight: 800;
+  color: #7a8a6a;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.lg-forgot {
+  font-size: 11px;
+  color: #7a8a6a;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.lg-forgot:hover { color: #1e2a14; text-decoration: underline; }
+
+.lg-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.lg-input-icon {
+  position: absolute;
+  right: 14px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.lg-inp {
+  width: 100%;
+  padding: 13px 44px 13px 44px;
+  border: 2px solid #e2ead0;
+  border-radius: 14px;
+  font-size: 15px;
+  font-family: 'Heebo', sans-serif;
+  color: #1e2a14;
+  background: #f7f8f2;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.lg-inp:focus {
+  border-color: #c8e86a;
+  background: #fff;
+}
+
+.lg-eye-btn {
+  position: absolute;
+  left: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.lg-eye-btn:hover { opacity: 1; }
+
+/* remember me */
+.lg-remember-row {
+  margin-bottom: 20px;
+}
+
+.lg-checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.lg-checkbox { display: none; }
+
+.lg-checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  border: 2px solid #e2ead0;
+  background: #f7f8f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s;
+  flex-shrink: 0;
+}
+
+.lg-checkbox:checked + .lg-checkbox-custom {
+  background: #c8e86a;
+  border-color: #c8e86a;
+}
+
+.lg-checkbox:checked + .lg-checkbox-custom::after {
+  content: '✓';
+  font-size: 11px;
+  font-weight: 800;
+  color: #1e2a14;
+}
+
+.lg-remember-lbl {
+  font-size: 13px;
+  color: #7a8a6a;
+  font-weight: 600;
+}
+
+/* submit button */
+.lg-btn-submit {
+  width: 100%;
+  padding: 16px;
+  background: #1e2a14;
+  color: #c8e86a;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.15s, transform 0.15s;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lg-btn-submit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(200,232,106,0.08) 100%);
+}
+
+.lg-btn-submit:hover {
+  background: #2a3d1a;
+  transform: translateY(-2px);
+}
+
+.lg-btn-arrow {
+  font-size: 18px;
+  transition: transform 0.2s;
+}
+
+.lg-btn-submit:hover .lg-btn-arrow {
+  transform: translateX(-4px);
+}
+
+/* divider */
+.lg-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.lg-divider-line {
+  flex: 1;
+  height: 1px;
+  background: #e2ead0;
+}
+
+.lg-divider-txt {
+  font-size: 12px;
+  color: #7a8a6a;
+  font-weight: 600;
+}
+
+/* tip card */
+.lg-tip-card {
+  background: #f7f8f2;
+  border-radius: 14px;
+  border: 1.5px dashed #d4e8a0;
+  padding: 12px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.lg-tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+.lg-tip-txt {
+  font-size: 12px;
+  color: #7a8a6a;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* register link */
+.lg-register-link {
+  text-align: center;
+  font-size: 13px;
+  color: #7a8a6a;
+  margin: 0;
+}
+
+.lg-register-link a {
+  color: #1e2a14;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.lg-register-link a:hover { text-decoration: underline; }

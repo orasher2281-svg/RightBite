@@ -1,0 +1,130 @@
+<div class="lg-page">
+
+  <!-- צד שמאל — אנימציית מזון -->
+  <div class="lg-left">
+    <div class="lg-left-content">
+      <div class="lg-logo-text">Right<span>Bite</span></div>
+      <h2 class="lg-left-title">ברוכה הבאה<br/>חזרה! 👋</h2>
+      <p class="lg-left-sub">נשמח לראות אותך שוב. בואי נמשיך את המסע לתזונה נכונה.</p>
+
+      <!-- floating food items -->
+      <div class="lg-food-orbit">
+        <div class="lg-orbit-ring lg-ring-1">
+          <div class="lg-food-item lg-fi-1">🥑</div>
+          <div class="lg-food-item lg-fi-2">🍳</div>
+          <div class="lg-food-item lg-fi-3">🥗</div>
+        </div>
+        <div class="lg-orbit-ring lg-ring-2">
+          <div class="lg-food-item lg-fi-4">🍎</div>
+          <div class="lg-food-item lg-fi-5">🥦</div>
+        </div>
+        <div class="lg-orbit-center">
+          <img src="smalLogo.png" alt="RightBite" class="lg-center-logo" />
+        </div>
+      </div>
+
+      <!-- stats row -->
+      <div class="lg-stats-row">
+        <div class="lg-stat">
+          <span class="lg-stat-num">2,400+</span>
+          <span class="lg-stat-lbl">מזונות במאגר</span>
+        </div>
+        <div class="lg-stat-divider"></div>
+        <div class="lg-stat">
+          <span class="lg-stat-num">AI</span>
+          <span class="lg-stat-lbl">ניתוח חכם</span>
+        </div>
+        <div class="lg-stat-divider"></div>
+        <div class="lg-stat">
+          <span class="lg-stat-num">100%</span>
+          <span class="lg-stat-lbl">מותאם אישית</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- צד ימין — טופס -->
+  <div class="lg-right">
+    <div class="lg-form-card">
+
+      <div class="lg-form-header">
+        <h1 class="lg-form-title">כניסה לחשבון</h1>
+        <p class="lg-form-sub">שמחים לראות אותך שוב</p>
+      </div>
+
+
+
+      <form (ngSubmit)="onLogin()" novalidate>
+
+        <div class="lg-field">
+          <label class="lg-lbl">אימייל</label>
+          <div class="lg-input-wrap">
+            <span class="lg-input-icon">📧</span>
+            <input
+              class="lg-inp"
+              type="email"
+              placeholder="your@email.com"
+              [(ngModel)]="loginRequest.email"
+              name="email"
+              required
+              autocomplete="email"
+            />
+          </div>
+        </div>
+
+        <div class="lg-field">
+          <div class="lg-lbl-row">
+            <label class="lg-lbl">סיסמה</label>
+            <a href="#" class="lg-forgot">שכחתי סיסמה</a>
+          </div>
+          <div class="lg-input-wrap">
+            <span class="lg-input-icon">🔒</span>
+            <input
+              class="lg-inp"
+              [type]="showPassword ? 'text' : 'password'"
+              placeholder="הסיסמה שלך"
+              [(ngModel)]="loginRequest.password"
+              name="password"
+              required
+              autocomplete="current-password"
+            />
+            <button type="button" class="lg-eye-btn" (click)="showPassword = !showPassword">
+              {{ showPassword ? '🙈' : '👁' }}
+            </button>
+          </div>
+        </div>
+
+        <!-- strength indicator (מוצג רק בהרשמה, כאן decorative) -->
+        <div class="lg-remember-row">
+          <label class="lg-checkbox-wrap">
+            <input type="checkbox" class="lg-checkbox" />
+            <span class="lg-checkbox-custom"></span>
+            <span class="lg-remember-lbl">זכור אותי</span>
+          </label>
+        </div>
+
+        <button type="submit" class="lg-btn-submit">
+          <span>כניסה לחשבון</span>
+          <span class="lg-btn-arrow">←</span>
+        </button>
+
+      </form>
+
+      <!-- divider -->
+      <div class="lg-divider">
+        <span class="lg-divider-line"></span>
+        <span class="lg-divider-txt">או</span>
+        <span class="lg-divider-line"></span>
+      </div>
+
+      <!-- Quick tip card -->
+      <div class="lg-tip-card">
+        <span class="lg-tip-icon">💡</span>
+        <p class="lg-tip-txt">טיפ: הכי קל להתחיל עם מעקב ארוחת הבוקר — קבלי תובנות על התזונה שלך מהיום הראשון.</p>
+      </div>
+
+      <p class="lg-register-link">עדיין אין לך חשבון? <a routerLink="/register">הרשמה חינם</a></p>
+    </div>
+  </div>
+
+</div>

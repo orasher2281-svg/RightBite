@@ -1,0 +1,203 @@
+@if (!isAddingNew && !selectFood) {
+<div class="af-page">
+
+  <header class="af-top-bar">
+    
+    <div class="af-top-right">
+      <span class="af-logo">חפשי כל <span class="af-logo-accent">מאכל</span></span>
+    </div>
+    
+    <div class="af-top-center">
+      <div class="af-search-and-btn-container">
+        
+        <div class="af-search-wrap">
+          <span class="af-search-icon">🔍</span>
+          <input
+            class="af-search-input"
+            type="text"
+            placeholder="חפשי מזון..."
+            [(ngModel)]="nameFood"
+            (ngModelChange)="onFoodNameChange()"
+            autocomplete="off"
+          />
+        </div>
+
+        <button class="af-add-ai-btn" (click)="isAddingNew = true">
+          <span class="af-add-icon">+</span> הוסיפי מאכל עם AI
+        </button>
+
+      </div>
+    </div>
+
+    <div class="af-top-left"></div>
+
+  </header>
+
+  <div class="af-main-container">
+    
+    <main class="af-content-right">
+      @if (foods.length > 0) {
+        <div class="af-food-grid">
+          @for (food of foods; track $index) {
+            <div class="af-food-card" (mouseenter)="previewFood(food)">
+              
+              <div class="af-card-top-row">
+                <div class="af-card-img-wrap">
+                  <img [src]="food?.imageUrl || 'smalLogo.png'" alt="{{ food.name }}" class="af-card-img" (error)="handleError($event)"/>
+                </div>
+                <div class="af-card-cal-block">
+                  <span class="af-card-cal-num">{{ food.calories }}</span>
+                  <span class="af-card-cal-label">קלוריות</span>
+                </div>
+              </div>
+              
+              <hr class="af-card-divider" />
+
+              <div class="af-card-mid-row">
+                <h3 class="af-card-title">{{ food.name }}</h3>
+                <button class="af-card-mini-add-btn" (click)="addFoodToEat(food)" title="הוסיפי לארוחה">
+                  <span class="af-mini-add-icon">+</span> הוספה
+                </button>
+              </div>
+              
+              <div class="af-card-macros-container">
+                
+                <div class="af-macro-box">
+                  <span class="af-macro-num text-fat">{{ food.fat }}</span>
+                  <span class="af-macro-name">שומנים</span>
+                  <span class="af-macro-unit">גרם</span>
+                </div>
+
+                <div class="af-macro-box">
+                  <span class="af-macro-num text-carb">{{ food.carbs }}</span>
+                  <span class="af-macro-name">פחמימות</span>
+                  <span class="af-macro-unit">גרם</span>
+                </div>
+
+                <div class="af-macro-box">
+                  <span class="af-macro-num text-protein">{{ food.protein }}</span>
+                  <span class="af-macro-name">חלבונים</span>
+                  <span class="af-macro-unit">גרם</span>
+                </div>
+
+              </div>
+
+            </div>
+          }
+        </div>
+      }
+    </main>
+
+    <aside class="af-sidebar-left">
+      <div class="af-estimator-card">
+        <div class="af-estimator-header">
+          <h2 class="af-estimator-title">מחשבון מהיר ✨</h2>
+        </div>
+
+        <div class="af-quick-foods">
+          @for (item of quickFoods; track item.name) {
+            <button
+              type="button"
+              class="af-qf"
+              [class.af-qf-active]="selectedQuickFood?.name === item.name"
+              (click)="selectQuickFood(item)">
+              {{ item.name }} {{ item.emoji }}
+            </button>
+          }
+        </div>
+
+        <div class="af-qty-row">
+          <span class="af-qty-val">{{ quickFoodQty }} גרם</span>
+          <input
+            type="range"
+            class="af-qty-slider"
+            min="10" max="500" step="10"
+            [(ngModel)]="quickFoodQty"
+            name="quickQty"
+            (ngModelChange)="updateQuickCalc()"
+          />
+          <span class="af-qty-lbl">כמות</span>
+        </div>
+
+        <div class="af-cal-box-dark">
+          <span class="af-cal-big-num">{{ quickCalories }}</span>
+          <span class="af-cal-lbl-sub">קלוריות</span>
+        </div>
+
+        <div class="af-macro-row-bottom">
+          <div class="af-macro-pill-card">
+            <span class="af-pill-val color-fat">{{ quickFat }}g</span>
+            <span class="af-pill-lbl">שומן</span>
+          </div>
+          <div class="af-macro-pill-card">
+            <span class="af-pill-val color-carb">{{ quickCarbs }}g</span>
+            <span class="af-pill-lbl">פחמימות</span>
+          </div>
+          <div class="af-macro-pill-card">
+            <span class="af-pill-val color-protein">{{ quickProtein }}g</span>
+            <span class="af-pill-lbl">חלבון</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+}
+
+@if (selectFood && !isAddingNew) {
+  <div class="af-log-backdrop">
+    <div class="af-log-panel">
+      <div class="af-log-hero">
+        <img [src]="selectFood.imageUrl || 'smalLogo.png'" alt="{{ selectFood.name }}" class="af-log-img" />
+        <div class="af-log-hero-gradient"></div>
+        <div class="af-log-hero-text">
+          <span class="af-log-badge">הוספה לארוחה</span>
+          <h2 class="af-log-food-name">{{ selectFood.name }}</h2>
+          <p class="af-log-base">בסיס: {{ selectFood.calories }} קל' ל-100 גרם</p>
+        </div>
+      </div>
+      <div class="af-log-form">
+        <div class="af-log-field">
+          <label class="af-log-label">כמות</label>
+          <div class="af-quantity-wrap">
+            <input type="number" class="af-quantity-input" [(ngModel)]="userMeal.quantity" placeholder="100" />
+            <span class="af-quantity-unit">גרם</span>
+          </div>
+        </div>
+        <div class="af-log-field">
+          <label class="af-log-label">סוג ארוחה</label>
+          <div class="af-meal-type-grid">
+            <label class="af-meal-chip" [class.selected]="userMeal.mealType === 'Breakfast'">
+              <input type="radio" [(ngModel)]="userMeal.mealType" value="Breakfast" hidden />🌅 בוקר
+            </label>
+            <label class="af-meal-chip" [class.selected]="userMeal.mealType === 'Lunch'">
+              <input type="radio" [(ngModel)]="userMeal.mealType" value="Lunch" hidden />☀️ צהריים
+            </label>
+            <label class="af-meal-chip" [class.selected]="userMeal.mealType === 'Dinner'">
+              <input type="radio" [(ngModel)]="userMeal.mealType" value="Dinner" hidden />🌙 ערב
+            </label>
+            <label class="af-meal-chip" [class.selected]="userMeal.mealType === 'Snack'">
+              <input type="radio" [(ngModel)]="userMeal.mealType" value="Snack" hidden />🍎 נשנוש
+            </label>
+          </div>
+        </div>
+        <div class="af-log-field">
+          <label class="af-log-label">תאריך</label>
+          <input type="date" class="af-date-input" [(ngModel)]="userMeal.mealDate" />
+        </div>
+      </div>
+      <div class="af-log-actions">
+        <button class="af-btn-save" (click)="saveFoodToEat()">✔ אישור ושמירה</button>
+        <button class="af-btn-cancel" (click)="cancelSelection()">ביטול</button>
+      </div>
+    </div>
+  </div>
+}
+
+@if (isAddingNew) {
+  <app-add-custom-food
+    (onClose)="isAddingNew = !!$event"
+    (foodAdded)="saveNewFood($event)">
+  </app-add-custom-food>
+}

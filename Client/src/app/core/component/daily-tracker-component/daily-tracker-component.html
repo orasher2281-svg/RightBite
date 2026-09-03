@@ -1,0 +1,128 @@
+<div class="tracker-wrapper">
+
+  <div class="header-section">
+    @if (userService.currentUser()) {
+      <h1>היי {{ userService.currentUser()?.name }}!</h1>
+      <p>הנה המעקב היומי שלך</p>
+    } @else {
+      <h1>היי, ברוך הבא ל-My App Diet!</h1>
+    }
+  </div>
+
+  @if (nutrition; as data) {
+    <div class="calorie-dashboard-card">
+      <div class="calorie-header">
+        <h2>🔥 קלוריות</h2>
+      </div>
+
+      <app-date-selector (dateSelected)="onDateChange($event)"></app-date-selector>
+
+      <div class="calorie-chart-wrapper">
+        <div class="calorie-ring"
+             [style.--protein-perc]="getPercentage(data.currentProtein, data.targetProtein)"
+             [style.--carbs-perc]="getPercentage(data.currentCarbs, data.targetCarbs)"
+             [style.--fat-perc]="getPercentage(data.currentFat, data.targetFat)">
+
+          <div class="calorie-center">
+            <span class="main-number">{{ data.dailyCalories | number:'1.0-0' }}</span>
+            <span class="sub-text">נשאר עוד {{ data.dailyCalories - data.currentCalories | number:'1.0-0' }}</span>
+          </div>
+
+          <div class="ring-icon"
+               [ngStyle]="getIconPosition(getPercentage(data.currentProtein, data.targetProtein))"
+               style="background:#FFEA36">🥚</div>
+
+          <div class="ring-icon"
+               [ngStyle]="getIconPosition(getPercentage(data.currentProtein, data.targetProtein) + getPercentage(data.currentCarbs, data.targetCarbs))"
+               style="background:#FF7B2F">🍞</div>
+
+          <div class="ring-icon"
+               [ngStyle]="getIconPosition(Math.min(getPercentage(data.currentProtein, data.targetProtein) + getPercentage(data.currentCarbs, data.targetCarbs) + getPercentage(data.currentFat, data.targetFat), 99))"
+               style="background:#C5E45D">🥑</div>
+        </div>
+      </div>
+
+      <div class="macros-grid">
+        <div class="macro-box protein-box">
+          <div class="macro-icon">🥚</div>
+          <div class="macro-info">
+            <span class="macro-title">חלבונים</span>
+            <span class="macro-values">{{ data.currentProtein | number:'1.0-1' }} / {{ data.targetProtein }}ג'</span>
+          </div>
+          <div class="macro-progress-bar">
+            <div class="bar-fill" [style.width.%]="getPercentage(data.currentProtein, data.targetProtein)"></div>
+          </div>
+        </div>
+
+        <div class="macro-box carbs-box">
+          <div class="macro-icon">🍞</div>
+          <div class="macro-info">
+            <span class="macro-title">פחמימות</span>
+            <span class="macro-values">{{ data.currentCarbs | number:'1.0-1' }} / {{ data.targetCarbs }}ג'</span>
+          </div>
+          <div class="macro-progress-bar">
+            <div class="bar-fill" [style.width.%]="getPercentage(data.currentCarbs, data.targetCarbs)"></div>
+          </div>
+        </div>
+
+        <div class="macro-box fat-box">
+          <div class="macro-icon">🥑</div>
+          <div class="macro-info">
+            <span class="macro-title">שומנים</span>
+            <span class="macro-values">{{ data.currentFat | number:'1.0-1' }} / {{ data.targetFat }}ג'</span>
+          </div>
+          <div class="macro-progress-bar">
+            <div class="bar-fill" [style.width.%]="getPercentage(data.currentFat, data.targetFat)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  } @else {
+    <!-- כרטיס ריק כשאין נתונים -->
+    <div class="calorie-dashboard-card empty-card">
+      <app-date-selector (dateSelected)="onDateChange($event)"></app-date-selector>
+      <div class="empty-ring-placeholder">
+        <div class="empty-ring-circle">
+          <span class="empty-ring-icon">🔥</span>
+        </div>
+        <p class="empty-ring-text">אין נתונים להיום עדיין</p>
+      </div>
+    </div>
+  }
+
+  <!-- עמודה ימנית — כפתור + ארוחות -->
+  <div class="meals-panel">
+    <button (click)="showMeals = !showMeals" class="toggle-meals-btn">
+      {{ showMeals ? 'הסתר ארוחות' : 'הצג ארוחות' }}
+    </button>
+
+    @if (showMeals) {
+      @if (meals().length > 0) {
+        <app-meal-list [meals]="meals()"></app-meal-list>
+      } @else {
+        <!-- מצב ריק מגניב -->
+        <div class="empty-state">
+          <div class="empty-orbit">
+            <div class="orbit-ring"></div>
+            <div class="orbit-center">🍽️</div>
+            <div class="orbit-dot dot-1">🥚</div>
+            <div class="orbit-dot dot-2">🥑</div>
+            <div class="orbit-dot dot-3">🍞</div>
+            <div class="orbit-dot dot-4">🍎</div>
+          </div>
+          <h3 class="empty-title">אין ארוחות להיום עדיין</h3>
+          <p class="empty-sub">
+            התחילי לתעד את הארוחות שלך<br>וקבלי תמונה מלאה של התזונה היומית
+          </p>
+          <div class="empty-steps">
+            <div class="empty-step"><span class="step-num">1</span>חפשי מזון או הוסיפי מאכל חדש</div>
+            <div class="empty-step"><span class="step-num">2</span>הזיני כמות ובחרי סוג ארוחה</div>
+            <div class="empty-step"><span class="step-num">3</span>עקבי אחרי המאקרו בזמן אמת</div>
+          </div>
+        </div>
+      }
+    }
+  </div>
+
+</div>

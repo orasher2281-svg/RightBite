@@ -1,0 +1,195 @@
+<div class="rp">
+
+  <!-- צד שמאל -->
+  <div class="rl">
+    <div class="rl-logo">Right<span>Bite</span></div>
+
+    <div class="rl-char">{{ stepInfo.char }}</div>
+    <div class="rl-title">{{ stepInfo.title }}</div>
+    <div class="rl-sub">{{ stepInfo.sub }}</div>
+
+    <!-- שלב 1 — BMI + פיצ'רים -->
+    @if (currentStep === 1) {
+      <div class="rl-features">
+        <div class="rl-feat"><div class="rl-feat-icon">🔥</div>מעקב קלוריות יומי</div>
+        <div class="rl-feat"><div class="rl-feat-icon">✨</div>ניתוח מזון עם AI</div>
+        <div class="rl-feat"><div class="rl-feat-icon">🎯</div>יעדים אישיים</div>
+      </div>
+      <div class="bmi-box">
+        <div class="bmi-box-title">מד BMI בזמן אמת</div>
+        <div class="bmi-track">
+          <div class="bmi-needle" [style.left.%]="bmiPercent"></div>
+        </div>
+        <div class="bmi-ticks">
+          <span>השמנה</span><span>עודף</span><span>תקין</span><span>תת</span>
+        </div>
+        <div class="bmi-val-row">
+          <span class="bmi-num" [style.color]="bmiColor">{{ bmi }}</span>
+          <span class="bmi-cat" [style.color]="bmiColor">{{ bmiCategory }}</span>
+        </div>
+      </div>
+    }
+
+    <!-- שלב 2 — יעדים -->
+    @if (currentStep === 2) {
+      <div class="rl-features">
+        <div class="rl-feat" [style.opacity]="user.goal === UserGoal.Lose ? 1 : 0.35">
+          <div class="rl-feat-icon">📉</div>ירידה במשקל
+        </div>
+        <div class="rl-feat" [style.opacity]="user.goal === UserGoal.Maintain ? 1 : 0.35">
+          <div class="rl-feat-icon">⚖️</div>שמירה על משקל
+        </div>
+        <div class="rl-feat" [style.opacity]="user.goal === UserGoal.Gain ? 1 : 0.35">
+          <div class="rl-feat-icon">💪</div>עלייה במשקל
+        </div>
+      </div>
+    }
+
+    <!-- שלב 3 — סיכום -->
+    @if (currentStep === 3) {
+      <div class="rl-features">
+        <div class="rl-feat">
+          <div class="rl-feat-icon">✓</div>
+          {{ user.weight }}ק"ג, {{ user.height }}ס"מ, {{ user.age }} שנים
+        </div>
+        <div class="rl-feat">
+          <div class="rl-feat-icon">✓</div>
+          יעד: {{ goalLabel }}
+        </div>
+        <div class="rl-feat" style="opacity:0.4">
+          <div class="rl-feat-icon">...</div>
+          עוד שלב אחד!
+        </div>
+      </div>
+    }
+
+    <!-- נקודות שלבים -->
+    <div class="rl-dots">
+      @for (step of [1,2,3]; track step) {
+        <div class="rl-dot"
+             [class.active]="currentStep === step"
+             [class.done]="currentStep > step">
+          {{ currentStep > step ? '✓' : step }}
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- צד ימין -->
+  <div class="rr">
+    <div class="prog-wrap">
+      <div class="prog-fill" [style.width.%]="(currentStep / totalSteps) * 100"></div>
+    </div>
+    <div class="step-lbl">שלב {{ currentStep }} מתוך {{ totalSteps }}</div>
+
+    <!-- שלב 1 — מדדים -->
+    @if (currentStep === 1) {
+      <div class="step-content">
+        <h2 class="step-title">מדדים גופניים</h2>
+        <p class="step-desc">כדי לחשב את הצרכים הקלוריים שלך</p>
+
+        <div class="field-row">
+          <div class="fw">
+            <label>משקל (ק"ג)</label>
+            <div class="spinner">
+              <button type="button" (click)="adj('weight', -0.5)">−</button>
+              <input type="number" [(ngModel)]="user.weight" name="weight" placeholder="לדוגמה: 70">
+              <button type="button" (click)="adj('weight', 0.5)">+</button>
+            </div>
+          </div>
+          <div class="fw">
+            <label>גובה (ס"מ)</label>
+            <div class="spinner">
+              <button type="button" (click)="adj('height', -1)">−</button>
+              <input type="number" [(ngModel)]="user.height" name="height" placeholder="לדוגמה: 170">
+              <button type="button" (click)="adj('height', 1)">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="fw">
+            <label>גיל</label>
+            <div class="spinner">
+              <button type="button" (click)="adj('age', -1)">−</button>
+              <input type="number" [(ngModel)]="user.age" name="age" placeholder="לדוגמה: 25">
+              <button type="button" (click)="adj('age', 1)">+</button>
+            </div>
+          </div>
+          <div class="fw">
+            <label>מגדר</label>
+            <div class="gender-btns">
+              <button type="button"
+                [class.sel]="user.gender === UserGender.Female"
+                (click)="user.gender = UserGender.Female">👩 אישה</button>
+              <button type="button"
+                [class.sel]="user.gender === UserGender.Male"
+                (click)="user.gender = UserGender.Male">👨 גבר</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- שלב 2 — יעד -->
+    @if (currentStep === 2) {
+      <div class="step-content">
+        <h2 class="step-title">מה המטרה שלך?</h2>
+        <p class="step-desc">נתאים לך תפריט מדויק</p>
+
+        <div class="goal-cards">
+          <div class="goal-card" [class.sel]="user.goal === UserGoal.Lose" (click)="user.goal = UserGoal.Lose">
+            <span class="goal-icon">📉</span>
+            <span class="goal-name">ירידה במשקל</span>
+            <span class="goal-desc">גירעון קלורי מחושב</span>
+          </div>
+          <div class="goal-card" [class.sel]="user.goal === UserGoal.Maintain" (click)="user.goal = UserGoal.Maintain">
+            <span class="goal-icon">⚖️</span>
+            <span class="goal-name">שמירה על משקל</span>
+            <span class="goal-desc">שמירת הכושר הנוכחי</span>
+          </div>
+          <div class="goal-card" [class.sel]="user.goal === UserGoal.Gain" (click)="user.goal = UserGoal.Gain">
+            <span class="goal-icon">💪</span>
+            <span class="goal-name">עלייה במשקל</span>
+            <span class="goal-desc">בניית מסת שריר</span>
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- שלב 3 — חשבון -->
+    @if (currentStep === 3) {
+      <div class="step-content">
+        <h2 class="step-title">פרטי חשבון</h2>
+        <p class="step-desc">כמעט סיימנו!</p>
+
+        <div class="fi">
+          <label>שם מלא</label>
+          <input type="text" [(ngModel)]="user.name" name="name" placeholder="השם שלך">
+        </div>
+        <div class="fi">
+          <label>אימייל</label>
+          <input type="email" [(ngModel)]="user.email" name="email" placeholder="your@email.com">
+        </div>
+        <div class="fi">
+          <label>סיסמה</label>
+          <input type="password" [(ngModel)]="user.password" name="password" placeholder="לפחות 6 תווים">
+        </div>
+      </div>
+    }
+
+    <div class="actions">
+      @if (currentStep > 1) {
+        <button class="btn-back" type="button" (click)="prevStep()">→ חזור</button>
+      }
+      @if (currentStep < totalSteps) {
+        <button class="btn-next" type="button" (click)="nextStep()">המשך ←</button>
+      }
+      @if (currentStep === totalSteps) {
+        <button class="btn-next" type="button" (click)="onRegister()">צור חשבון ✔</button>
+      }
+    </div>
+
+    <p class="login-lnk">כבר יש לך חשבון? <a routerLink="/login">כניסה</a></p>
+  </div>
+</div>

@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap');
+
+:host { display: block; }
+* { box-sizing: border-box; }
+
+:root {
+  --green-dark:  #1e2a14;
+  --green-lime:  #c8e86a;
+  --green-light: #f0f5e0;
+  --orange:      #FF7B2F;
+  --bg:          #f4f6ee;
+  --card-bg:     #ffffff;
+  --text-main:   #1e2a14;
+  --text-soft:   #7a8a6a;
+  --border:      #e2ead0;
+}
+
+.af-page {
+  font-family: 'Heebo', sans-serif;
+  direction: rtl;
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+/* TOP BAR */
+.af-top-bar {
+  background-color: var(--green-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 40px;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.af-top-right {
+  display: flex;
+  align-items: center;
+  min-width: 180px;
+}
+
+.af-logo {
+  font-size: 25px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.af-logo-accent {
+  color: var(--green-lime);
+  margin-right: 5px;
+}
+
+.af-top-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.af-search-and-btn-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 680px;
+}
+
+.af-search-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.af-search-input {
+  width: 100%;
+  padding: 13px 48px 13px 20px;
+  border-radius: 14px;
+  border: none;
+  background-color: #ffffff;
+  color: var(--text-main);
+  font-size: 16px;
+  font-family: 'Heebo', sans-serif;
+  outline: none;
+  text-align: right;
+}
+
+.af-search-input::placeholder {
+  color: #9aa890;
+}
+
+.af-search-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%) scaleX(-1);
+  font-size: 18px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.af-add-ai-btn {
+  background-color: var(--green-lime);
+  color: var(--green-dark);
+  border: none;
+  border-radius: 14px;
+  padding: 13px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.af-add-ai-btn:hover { background-color: #b3d455; }
+.af-add-ai-btn:active { transform: scale(0.98); }
+
+.af-top-left { min-width: 180px; }
+
+/* LAYOUT גמיש - מחשבון מורחב ל-420px בשמאל */
+.af-main-container {
+  display: grid;
+  grid-template-columns: 1fr 430px;
+  gap: 32px;
+  padding: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* טור שמאל - מחשבון מהיר */
+.af-sidebar-left {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  border: 1.5px solid var(--border);
+  height: fit-content;
+}
+
+.af-estimator-title {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--text-main);
+  margin: 0 0 16px 0;
+}
+
+.af-quick-foods {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.af-qf {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer;
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.af-qf:hover { border-color: var(--green-lime); }
+.af-qf-active {
+  border-color: var(--green-dark) !important;
+  background: var(--green-light) !important;
+}
+
+.af-qty-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.af-qty-lbl { font-size: 13px; font-weight: 700; color: var(--text-soft); }
+.af-qty-slider { flex: 1; accent-color: var(--green-dark); cursor: pointer; }
+.af-qty-val { font-size: 14px; font-weight: 800; color: var(--text-main); min-width: 64px; }
+
+.af-cal-box-dark {
+  background-color: var(--green-dark);
+  border-radius: 20px;
+  padding: 32px 20px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.af-cal-big-num { display: block; font-size: 64px; font-weight: 900; line-height: 1; }
+.af-cal-lbl-sub { font-size: 14px; color: rgba(255, 255, 255, 0.4); font-weight: 600; margin-top: 4px; }
+
+.af-macro-row-bottom { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.af-macro-pill-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 4px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.af-pill-val { font-size: 16px; font-weight: 900; }
+.color-fat { color: #8cb920; }
+.color-carb { color: var(--orange); }
+.color-protein { color: #e0b300; }
+.af-pill-lbl { font-size: 11px; color: var(--text-soft); font-weight: 600; }
+
+/* טור ימין - גריד כרטיסיות */
+.af-content-right { display: flex; flex-direction: column; }
+
+.af-food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* כרטיסיית המאכל החדשה - תואמת ל-Image_a5a0a7.png */
+.af-food-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1.5px solid var(--border);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.af-food-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--green-lime);
+}
+
+/* שורת ראש הכרטיסייה: תמונה וקלוריות */
+.af-card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.af-card-img-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background-color: var(--green-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.af-card-img { width: 100%; height: 100%; object-fit: cover; }
+.af-card-cal-block { text-align: center; }
+.af-card-cal-num { display: block; font-size: 36px; font-weight: 900; color: var(--text-main); line-height: 1; }
+.af-card-cal-label { font-size: 13px; color: var(--text-soft); font-weight: 600; margin-top: 2px; }
+
+/* קו מפריד עדין */
+.af-card-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 12px 0;
+  width: 100%;
+}
+
+/* שורת הכותרת וכפתור ההוספה */
+.af-card-mid-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.af-card-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0;
+  text-align: right;
+}
+
+/* כפתור הוספה קטן לארוחה */
+.af-card-mini-add-btn {
+  background-color: var(--green-lime);
+  color: var(--green-dark);
+  border: none;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 800;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.af-card-mini-add-btn:hover { opacity: 0.9; }
+.af-card-mini-add-btn:active { transform: scale(0.96); }
+.af-mini-add-icon { font-size: 14px; font-weight: 900; }
+
+/* קונטיינר קוביות המאקרו התחתון */
+.af-card-macros-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.af-macro-box {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 10px 4px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.af-macro-num { font-size: 18px; font-weight: 900; line-height: 1.2; }
+.text-fat { color: #8cb920; }
+.text-carb { color: var(--orange); }
+.text-protein { color: #e0b300; }
+
+.af-macro-name { font-size: 11px; color: var(--text-soft); font-weight: 700; margin-top: 2px; }
+.af-macro-unit { font-size: 10px; color: #a4b295; font-weight: 500; }
+
+/* לוג פאנל - חלון הוספה */
+.af-log-backdrop {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(30,42,20,0.15); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+.af-log-panel { width: 100%; max-width: 460px; background: #ffffff; border-radius: 28px; overflow: hidden; border: 1.5px solid var(--border); }
+.af-log-hero { position: relative; height: 180px; }
+.af-log-img { width: 100%; height: 100%; object-fit: cover; }
+.af-log-hero-gradient { position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,42,20,0.85), transparent); }
+.af-log-hero-text { position: absolute; bottom: 16px; right: 20px; left: 20px; color: #fff; }
+.af-log-badge { display: inline-block; background: var(--green-lime); color: var(--green-dark); font-size: 11px; font-weight: 800; padding: 2px 10px; border-radius: 20px; margin-bottom: 6px; }
+.af-log-food-name { font-size: 24px; font-weight: 900; margin: 0; }
+.af-log-base { font-size: 12px; opacity: 0.7; margin: 2px 0 0; }
+.af-log-form { padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+.af-log-field { display: flex; flex-direction: column; gap: 6px; }
+.af-log-label { font-size: 12px; font-weight: 800; color: var(--text-soft); }
+.af-quantity-wrap { display: flex; align-items: center; border: 2px solid var(--border); border-radius: 12px; }
+.af-quantity-input { flex: 1; border: none; padding: 12px; font-size: 18px; font-weight: 800; outline: none; text-align: right; }
+.af-quantity-unit { padding: 0 12px; font-size: 14px; font-weight: 700; color: var(--text-soft); }
+.af-meal-type-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.af-meal-chip { padding: 10px 4px; text-align: center; border-radius: 12px; background: var(--bg); font-size: 12px; font-weight: 700; cursor: pointer; border: 2px solid transparent; }
+.af-meal-chip.selected { background: var(--green-light); border-color: var(--green-dark); }
+.af-date-input { width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 12px; font-family: 'Heebo'; outline: none; }
+.af-log-actions { display: flex; gap: 10px; padding: 10px 20px 20px; }
+.af-btn-save { flex: 1; background: var(--green-dark); color: #ffffff; border: none; border-radius: 14px; padding: 14px; font-size: 15px; font-weight: 800; cursor: pointer; }
+.af-btn-cancel { background: var(--bg); color: var(--text-soft); border: none; border-radius: 14px; padding: 14px 20px; font-size: 14px; font-weight: 700; cursor: pointer; }

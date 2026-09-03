@@ -1,0 +1,41 @@
+
+<nav class="rb-nav">
+  <div class="rb-nav-inner flex align-items-center gap-4">
+
+    <a routerLink="/" class="rb-logo flex-shrink-0">
+      <img src="logo.png" alt="RightBite" class="rb-logo-img" />
+    </a>
+    @if (userService.currentUser()) {
+      <div class="flex align-items-center gap-1 flex-1">
+        <a routerLink="home" routerLinkActive="active" class="rb-link">דף הבית</a>
+        <a routerLink="dailyTracker" routerLinkActive="active" class="rb-link">מעקב יומי</a>
+        <a routerLink="addFood" routerLinkActive="active" class="rb-link">הוסף ארוחה</a>
+      </div>
+    }
+
+    <div class="flex align-items-center gap-3 mr-auto">
+     @if (userService.currentUser(); as user) {
+  <span class="rb-user-name">היי, {{ user.name }}</span>
+  <p-avatar
+    [label]="user.name!.charAt(0)"
+    shape="circle"
+    styleClass="rb-avatar" />
+     <button class="rb-btn-logout" (click)="logout()">
+    יציאה
+  </button>
+} @else {
+  <a routerLink="home" routerLinkActive="active" class="rb-link">דף הבית</a>
+  <a routerLink="/login">
+    <p-button label="כניסה" variant="outlined" styleClass="rb-btn-ghost" />
+  </a>
+  <a routerLink="/register">
+    <p-button label="הרשמה חינם" styleClass="rb-btn-primary" />
+  </a>
+
+   
+}
+
+    </div>
+
+  </div>
+</nav>

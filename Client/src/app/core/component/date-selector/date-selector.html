@@ -1,0 +1,12 @@
+<div class="date-bar">
+  @for (item of dates(); track item.date) {
+    <button 
+      [class.active]="isSameDay(item.date)" 
+      (click)="selectDate(item.date)">
+      
+      <span class="day-label">{{ item.dayLabel }}</span>
+      <span class="day-number">{{ item.dayNumber }}</span>
+      
+    </button>
+  }
+</div>
