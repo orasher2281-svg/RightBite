@@ -209,17 +209,22 @@ cd RightBite
 - Log a meal by searching, or by adding a new food via AI (name / description / photo).
 
 ---
-
 ## 🔑 Environment & Secrets Summary
 
 | File | Committed to Git? | Purpose |
 |---|---|---|
-| `Server_Diet/appsettings.example.json` | ✅ Yes | Template showing required configuration keys, with placeholder values. |
-| `Server_Diet/appsettings.json` | ✅ Yes (contains no secrets by default) | Base ASP.NET Core configuration. |
-| `Server_Diet/appsettings.Development.json` | ❌ No (git-ignored) | Your real local secrets — connection string, JWT key, Gemini key, Resend key. |
-| `Client/` — no `.env` currently required | — | Frontend calls the API base URL configured in its services. |
+| `appsettings.example.json` | ✅ Yes | Configuration template containing placeholder values. |
+| `appsettings.json` | ✅ Yes | Base ASP.NET Core configuration without sensitive values. |
+| `appsettings.Development.json` | ❌ No | Local development configuration containing sensitive values such as the database connection string, JWT secret, Gemini API key, and Resend API key. |
+| `Client/` | ✅ Yes | Angular frontend. No `.env` file is currently required. |
 
-Never commit real secrets. If you need environment-specific frontend config, add an Angular environment file and git-ignore the one holding secrets, following the same pattern.
+### 🔒 Security
+
+Real secrets must never be committed to the repository.
+
+Sensitive configuration should be stored locally in `appsettings.Development.json`, which is excluded from Git.
+
+The `appsettings.example.json` file is provided as a template so that developers can configure the application locally without exposing private credentials.
 
 ---
 
