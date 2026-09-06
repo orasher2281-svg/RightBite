@@ -279,4 +279,4 @@ Full, interactive documentation for every endpoint is available via Swagger once
 
 ## 📄 License
 
-Add a license of your choice (e.g. MIT) by creating a `LICENSE` file in the repository root.
+© 2026 Ora Sher. All rights reserved.
