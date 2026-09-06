@@ -3,13 +3,12 @@
 ![.NET](https://img.shields.io/badge/.NET-8-512BD4?style=flat-square&logo=dotnet&logoColor=white)
 ![C#](https://img.shields.io/badge/C%23-.NET-239120?style=flat-square&logo=csharp&logoColor=white)
 ![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-Web_API-512BD4?style=flat-square&logo=dotnet&logoColor=white)
+![REST API](https://img.shields.io/badge/REST-API-FF6C37?style=flat-square&logo=fastapi&logoColor=white)
 ![EF Core](https://img.shields.io/badge/EF_Core-8-6DB33F?style=flat-square&logo=nuget&logoColor=white)
 ![SQL Server](https://img.shields.io/badge/SQL_Server-2019+-CC2927?style=flat-square&logo=microsoftsqlserver&logoColor=white)
 ![Angular](https://img.shields.io/badge/Angular-21-DD0031?style=flat-square&logo=angular&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Auth](https://img.shields.io/badge/Auth-JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)
 ![Google Gemini](https://img.shields.io/badge/AI-Google_Gemini-4285F4?style=flat-square&logo=googlegemini&logoColor=white)
-![Resend](https://img.shields.io/badge/Email-Resend-000000?style=flat-square&logo=maildotru&logoColor=white)
 
 **RightBite** is a full-stack nutrition and meal-tracking application. Users register with their body metrics (weight, height, age, gender, and goal), and the system automatically calculates their personalized daily calorie and macronutrient targets. Throughout the day, users log the meals they eat — by searching an existing food database, or by adding a new food using **AI**, based on a **name**, a **free-text description**, or an **uploaded photo**. A daily dashboard visualizes progress toward calorie, protein, carb, and fat targets.
 
