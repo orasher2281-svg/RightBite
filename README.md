@@ -266,7 +266,7 @@ Full, interactive documentation for every endpoint is available via Swagger once
 
 ### Add Food via AI (name / description / photo)
 
-![Add Food via AI](Screenshots/Add-Food-AI-01.png.png)
+![Add Food ](Screenshots/Add-Food-01.png.png)
 ![Add Food via AI](Screenshots/Add-Food-AI-02.png.png)
 ![Add Food via AI](Screenshots/Add-Food-AI-03.png.png)
 ![Add Food via AI](Screenshots/Add-Food-AI-04.png.png)
