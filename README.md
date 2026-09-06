@@ -247,19 +247,33 @@ Full, interactive documentation for every endpoint is available via Swagger once
 
 ## 📸 Screenshots
 
-<!-- Add your screenshots below. Example:
-### Home / Login
-![Home page](docs/screenshots/home.png)
+### Home
+
+![Home](Screenshots/Home-01.png.png)
+![Home](Screenshots/Home-02.png.png)
+![Home](Screenshots/Home-03.png.png)
+![Home](Screenshots/Home-04.png.png)
+
+### Login
+
+![Login](Screenshots/Login-01.png.png)
 
 ### Register — Nutrition Goals Calculated Automatically
-![Register](docs/screenshots/register.png)
 
-### Daily Tracker — Calories & Macros
-![Daily tracker](docs/screenshots/daily-tracker.png)
+![Register](Screenshots/Register-01.png.png)
+![Register](Screenshots/Register-02.png.png)
+![Register](Screenshots/Register-03.png.png)
 
 ### Add Food via AI (name / description / photo)
-![AI food analysis](docs/screenshots/ai-food.png)
--->
+
+![Add Food via AI](Screenshots/Add-Food-AI-01.png.png)
+![Add Food via AI](Screenshots/Add-Food-AI-02.png.png)
+![Add Food via AI](Screenshots/Add-Food-AI-03.png.png)
+![Add Food via AI](Screenshots/Add-Food-AI-04.png.png)
+
+### Daily Tracker — Calories & Macros
+
+![Daily Tracker](Screenshots/Daily-Tracker-01.png.png)
 
 ---
 
