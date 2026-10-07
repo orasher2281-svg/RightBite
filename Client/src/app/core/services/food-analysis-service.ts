@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NutritionalInfo } from '../../shared/models/nutritional-info';
-
+import { API_URL } from '../../api.config';
 @Injectable({
   providedIn: 'root',
 })
 export class FoodAnalysisService {
 
-private apiUrl = 'https://localhost:7231/api/UserMeal/analyze';
+private apiUrl = API_URL + '/api/UserMeal/analyze';
 
   constructor(private http: HttpClient) {}
 

@@ -4,7 +4,7 @@ import { User } from '../../shared/models/user';
 import { Observable, tap } from 'rxjs';
 import { AuthResult } from '../../shared/models/auth-result';
 import { LoginRequest } from '../../shared/models/login-request';
-
+import { API_URL } from '../../api.config';
 @Injectable({
   providedIn: 'root',
 })
@@ -20,7 +20,7 @@ export class UserService {
 
   // 3. סיגנל מחושב שמציג האם המשתמש מחובר (נוחות לכל הפרויקט)
   isLoggedIn = computed(() => this.token() !== null);
-  private apiUrl='https://localhost:7231/api/Users/';
+  private apiUrl = API_URL + '/api/Users/';
   getUserById(userId:number):Observable<User>{
     return this.http.get<User>(this.apiUrl+userId).pipe(
       tap(user => this.currentUser.set(user)) // ברגע שמקבלים את המשתמש, נשמור אותו בסיגנל

@@ -3,7 +3,7 @@ import { Injectable, signal } from '@angular/core';
 import { UserMeal } from '../../shared/models/user-meal';
 import { Observable, tap } from 'rxjs';
 import { DailyNutrition } from '../../shared/models/daily-nutrition';
-
+import { API_URL } from '../../api.config';
 @Injectable({
   providedIn: 'root',
 })
@@ -11,7 +11,7 @@ export class MealService {
 
   constructor(private http:HttpClient) { }
   dailyNutrition=signal<DailyNutrition | null>(null);
-  private apiUrl='https://localhost:7231/api/UserMeal/';
+  private apiUrl = API_URL + '/api/UserMeal/';
   loadDailyNutrition(userId: number, date: string): Observable<DailyNutrition> {
     return this.http.get<DailyNutrition>(`${this.apiUrl}GetDailyNutrition?id=${userId.toString()}&date=${date}`).pipe(
       tap((data) => {

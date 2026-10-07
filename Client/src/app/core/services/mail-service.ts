@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Email } from '../../shared/models/email';
 import { Observable } from 'rxjs';
-
+import { API_URL } from '../../api.config';
 @Injectable({
   providedIn: 'root',
 })
 export class MailService {
  
 // החלף בכתובת השרת האמיתית שלך (למשל: http://localhost:5000)
-  private apiUrl = 'https://localhost:7231/api/Email/';
+  private apiUrl = API_URL + '/api/Email/';
 
   constructor(private http: HttpClient) {}
 
