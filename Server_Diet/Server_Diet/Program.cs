@@ -37,7 +37,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 //חיבור למסד
 builder.Services.AddDbContext<DietContext>(
     options => options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DietDb"))
+        builder.Configuration.GetConnectionString("DietDb"),
+        sql => sql.EnableRetryOnFailure())
 );
 builder.Services.AddCors(options =>
 {
@@ -45,13 +46,14 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy
-                .WithOrigins("http://localhost:4200")
+                .WithOrigins(
+                     "http://localhost:4200",
+                     builder.Configuration["FrontendUrl"] ?? "http://localhost:4200")
                 .AllowAnyHeader()
                 .AllowAnyMethod();
         });
 });
 
-builder.Services.AddDbContext<DietContext>();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddScoped<IUserRepository,UserRepository>();
@@ -79,15 +81,13 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseHttpsRedirection();
 }
 
 // הוספת הגדרה מפורשת למיקום הקבצים הסטטיים
 
 app.UseStaticFiles();
 app.UseCors("AllowAngular");
-app.UseHttpsRedirection();
-
-
 app.UseAuthentication(); // 1. מי אתה? (בדיקת הטוקן) 
 app.UseAuthorization();  // 2. האם מותר לך לעשות את זה? (הרשאות)
 app.MapControllers();

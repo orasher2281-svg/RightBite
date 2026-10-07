@@ -1,17 +1,18 @@
 ﻿using Core.Models;
 using Core.Services;
-using Microsoft.AspNetCore.Http;
+using Server.date;
+
 namespace Web_Api.Service
 {
-  
-
     public class FileService : IFileService
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly DietContext _db;
 
-        public FileService(IHttpContextAccessor httpContextAccessor)
+        public FileService(IHttpContextAccessor httpContextAccessor, DietContext db)
         {
             _httpContextAccessor = httpContextAccessor;
+            _db = db;
         }
 
         public async Task<ProcessedFileResult> SaveFileAsync(Stream fileStream, string originalFileName)
@@ -20,31 +21,27 @@ namespace Web_Api.Service
             await fileStream.CopyToAsync(memoryStream);
             byte[] imageBytes = memoryStream.ToArray();
 
-            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
-
-            if (!Directory.Exists(uploadsFolder))
+            var ext = Path.GetExtension(originalFileName).ToLowerInvariant();
+            var contentType = ext switch
             {
-                Directory.CreateDirectory(uploadsFolder);
-            }
+                ".png" => "image/png",
+                ".webp" => "image/webp",
+                ".gif" => "image/gif",
+                _ => "image/jpeg"
+            };
 
-            var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(originalFileName);
-            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+            var image = new FoodImage { Data = imageBytes, ContentType = contentType };
+            _db.FoodImages.Add(image);
+            await _db.SaveChangesAsync();
 
-            await System.IO.File.WriteAllBytesAsync(filePath, imageBytes);
-
-            // בניית כתובת מלאה שכוללת את ה-Domain והשנל של ה-API (למשל https://localhost:7231/uploads/...)
             string imageUrl = string.Empty;
             var request = _httpContextAccessor.HttpContext?.Request;
             if (request != null)
             {
-                imageUrl = $"{request.Scheme}://{request.Host}/uploads/{uniqueFileName}";
+                imageUrl = $"{request.Scheme}://{request.Host}/api/Image/{image.Id}";
             }
 
-            return new ProcessedFileResult
-            {
-                ImageUrl = imageUrl,
-                ImageBytes = imageBytes
-            };
+            return new ProcessedFileResult { ImageUrl = imageUrl, ImageBytes = imageBytes };
         }
     }
 }
